@@ -6,16 +6,19 @@ import { TurkeyComponent } from './turkey.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromTurkey from './state/turkey.reducer';
 import { TurkeyListComponent } from './components/turkey-list/turkey-list.component';
+import { TurkeyFormComponent } from './components/turkey-form/turkey-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [TurkeyComponent, TurkeyListComponent],
+  declarations: [TurkeyComponent, TurkeyListComponent, TurkeyFormComponent],
   imports: [
     CommonModule,
     TurkeyRoutingModule,
     StoreModule.forFeature(
       fromTurkey.turkeyFeatureKey,
       fromTurkey.turkeyReducer
-    )
+    ),
+    ReactiveFormsModule
   ]
 })
 export class TurkeyModule { }

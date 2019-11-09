@@ -20,7 +20,7 @@ const initialState: TurkeyState = {
       id: 1,
       name: 'Gobblé Decarte',
       quote: 'I thank, therefore I gobble.',
-      imgName: 'gobblé-decarte.jpg'
+      imgName: 'gobble-decarte.jpg'
     },
     {
       id: 2,

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Turkey } from './state/turkey.model';
 import * as Actions from './state/turkey.action';
 import * as Selectors from './state/turkey.selector';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TurkeyFormComponent, EditTurkeyResult } from './components/turkey-form/turkey-form.component';
 
 @Component({
   selector: 'app-turkey',
@@ -15,9 +17,11 @@ export class TurkeyComponent implements OnInit {
 
   turkeys$: Observable<Turkey[]>;
   selectedTurkey$: Observable<Turkey>;
+  showEditButton = false;
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private ngbModal: NgbModal
   ) { }
 
   ngOnInit() {
@@ -32,6 +36,16 @@ export class TurkeyComponent implements OnInit {
 
   set selectedTurkey(turkey: Turkey) {
     this.store.dispatch(Actions.selectTurkey({ turkey }));
+  }
+
+  editTurkey(turkey: Turkey): void {
+    const modalRef = this.ngbModal.open(TurkeyFormComponent);
+    modalRef.componentInstance.turkey = turkey;
+    modalRef.result.then((updatedTurkey: EditTurkeyResult) => {
+      if (updatedTurkey) {
+        this.store.dispatch(Actions.updateTurkey({ updatedTurkey }));
+      }
+    });
   }
 
 }

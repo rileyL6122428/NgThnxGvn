@@ -1,5 +1,32 @@
-<app-turkey-list
-  [turkeys]="turkeys$ | async"
-  [selectedTurkey]="selectedTurkey$ | async"
-  (selection)="selectedTurkey = $event">
-</app-turkey-list>
+<section id="deep-thinking-turkeys">
+  <app-turkey-list
+    [turkeys]="turkeys$ | async"
+    [selectedTurkey]="selectedTurkey$ | async"
+    (selection)="selectedTurkey = $event">
+  </app-turkey-list>
+
+  <div
+    *ngIf="selectedTurkey$ | async as selectedTurkey"
+    id="turkey-editor"
+    (mouseenter)="showEditButton = true"
+    (mouseleave)="showEditButton = false">
+    <div id="image-quote-container" class="border border-primary rounded">
+      <img src="/assets/turkeys/{{selectedTurkey.imgName}}" />
+
+      <blockquote class="blockquote">
+        <p class="mb-0">{{selectedTurkey.quote}}</p>
+        <footer class="blockquote-footer"><cite>{{selectedTurkey.name}}</cite></footer>
+      </blockquote>
+    </div>
+    <div id="editor-button-container">
+      <button
+        *ngIf="showEditButton"
+        id="edit-button"
+        class="btn btn-primary"
+        (click)="editTurkey(selectedTurkey)">
+        <img src="/assets/octicons/pencil.svg">
+      </button>
+    </div>
+  </div>
+</section>
+
