@@ -13,20 +13,20 @@ import * as Selectors from './state/turkey.selector';
 })
 export class TurkeyComponent implements OnInit {
 
-  turkeys$: Observable<Turkey[]>;
   selectedTurkey$: Observable<Turkey>;
+  turkeys$: Observable<Turkey[]>;
 
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    this.turkeys$ = this.store.pipe(
-      select(Selectors.selectTurkeys)
-    );
-
     this.selectedTurkey$ = this.store.pipe(
       select(Selectors.selectCurrentTurkey)
+    );
+
+    this.turkeys$ = this.store.pipe(
+      select(Selectors.selectTurkeys)
     );
   }
 
