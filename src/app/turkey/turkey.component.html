@@ -1,1 +1,10 @@
-<p>turkey works!</p>
+<ul *ngIf="turkeys$ | async as turkeys" class="list-group">
+  <button
+    *ngFor="let turkey of turkeys"
+    role="listitem"
+    class="list-group-item"
+    [class.active]="turkey === selectedTurkey"
+    (click)="selectedTurkey = turkey">
+    {{ turkey.name }}
+  </button>
+</ul>

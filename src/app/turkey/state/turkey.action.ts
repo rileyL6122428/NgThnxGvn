@@ -3,7 +3,7 @@ import { Turkey } from './turkey.model';
 
 export const selectTurkey = createAction(
   '[Turkey] Select Turkey',
-  props<{ turkeyId: number }>()
+  props<{ turkey: Turkey }>()
 );
 
 export const updateTurkey = createAction(

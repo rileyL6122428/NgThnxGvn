@@ -4,12 +4,16 @@ import { on, createReducer } from '@ngrx/store';
 
 export const turkeyFeatureKey = 'turkey';
 
-export interface State {
+export interface TurkeyState {
   turkeys: Turkey[];
   selectedTurkeyIndex: number | null;
 }
 
-const initialState: State = {
+export interface AppState {
+  turkey: TurkeyState;
+}
+
+const initialState: TurkeyState = {
   selectedTurkeyIndex: 0,
   turkeys: [
     {
@@ -30,14 +34,14 @@ const initialState: State = {
 export const turkeyReducer = createReducer(
   initialState,
 
-  on(TurkeyActions.selectTurkey, (state, { turkeyId }) => ({
+  on(TurkeyActions.selectTurkey, (state, { turkey }) => ({
     ...state,
-    selectedTurkeyIndex: turkeyId
+    selectedTurkeyIndex: state.turkeys.indexOf(turkey)
   })),
 
   on(TurkeyActions.updateTurkey, (state, { updatedTurkey }) => ({
     ...state,
-    turkeys: state.turkeys.map((turkey) =>
+    turkeys: state.turkeys.map(turkey =>
       turkey.id === updatedTurkey.id ? updatedTurkey : turkey
     )
   }))
