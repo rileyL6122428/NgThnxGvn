@@ -20,8 +20,7 @@ export class TurkeyComponent implements OnInit {
   showEditButton = false;
 
   constructor(
-    private store: Store<AppState>,
-    private ngbModal: NgbModal
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
