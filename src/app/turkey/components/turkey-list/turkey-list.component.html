@@ -1,0 +1,10 @@
+<ul class="list-group">
+  <button
+    *ngFor="let turkey of turkeys"
+    role="listitem"
+    class="list-group-item"
+    [class.active]="turkey === selectedTurkey"
+    (click)="selection.emit(turkey)">
+    {{ turkey.name }}
+  </button>
+</ul>

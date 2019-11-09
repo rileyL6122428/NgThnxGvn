@@ -3,8 +3,8 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from './state/turkey.reducer';
 import { Observable } from 'rxjs';
 import { Turkey } from './state/turkey.model';
-import * as TurkeyActions from './state/turkey.action';
-import * as TurkeySelectors from './state/turkey.selector';
+import * as Actions from './state/turkey.action';
+import * as Selectors from './state/turkey.selector';
 
 @Component({
   selector: 'app-turkey',
@@ -14,28 +14,24 @@ import * as TurkeySelectors from './state/turkey.selector';
 export class TurkeyComponent implements OnInit {
 
   turkeys$: Observable<Turkey[]>;
-  private _selectedTurkey: Turkey;
+  selectedTurkey$: Observable<Turkey>;
 
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    this.turkeys$ = this.store.pipe(select(TurkeySelectors.selectTurkeys));
+    this.turkeys$ = this.store.pipe(
+      select(Selectors.selectTurkeys)
+    );
 
-    this.store
-      .pipe(select(TurkeySelectors.selectCurrentTurkey))
-      .subscribe(
-        (selectedTurkey) => this._selectedTurkey = selectedTurkey
-      );
+    this.selectedTurkey$ = this.store.pipe(
+      select(Selectors.selectCurrentTurkey)
+    );
   }
 
   set selectedTurkey(turkey: Turkey) {
-    this.store.dispatch(TurkeyActions.selectTurkey({ turkey }));
-  }
-
-  get selectedTurkey(): Turkey {
-    return this._selectedTurkey;
+    this.store.dispatch(Actions.selectTurkey({ turkey }));
   }
 
 }
