@@ -4,18 +4,19 @@
 
   app-turkey-list {
     display: block;
-    width: 25rem;
+    width: 15rem;
   }
 
   #turkey-editor {
-    width: 35rem;
+    width: 42rem;
     padding-bottom: 5rem;
 
     #image-quote-container {
       display: flex;
 
       img {
-        width: 12rem;
+        width: 18rem;
+        border-radius: .2rem;
       }
 
       blockquote {

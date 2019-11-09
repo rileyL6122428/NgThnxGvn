@@ -18,7 +18,7 @@ const initialState: TurkeyState = {
   turkeys: [
     {
       id: 1,
-      name: 'Gobblé Decarte',
+      name: 'Gobblé Decartes',
       quote: 'I thank, therefore I gobble.',
       imgName: 'gobble-decarte.jpg'
     },
@@ -27,6 +27,12 @@ const initialState: TurkeyState = {
       name: 'Thomas Ghobbes',
       quote: 'The life of turkey (in a state of nature) is solitary, poor, nasty, brutish, and short.',
       imgName: 'thomas-ghobbs.png'
+    },
+    {
+      id: 3,
+      name: 'Turclitus Pheasants',
+      quote: 'One cannot peck the same mashed potatoes twice.',
+      imgName: 'turclitus-pheasants.png'
     }
   ]
 };
