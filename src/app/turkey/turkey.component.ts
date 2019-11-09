@@ -15,7 +15,6 @@ export class TurkeyComponent implements OnInit {
 
   turkeys$: Observable<Turkey[]>;
   selectedTurkey$: Observable<Turkey>;
-  showEditButton = false;
 
   constructor(
     private store: Store<AppState>
