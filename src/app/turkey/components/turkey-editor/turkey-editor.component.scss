@@ -1,0 +1,28 @@
+#turkey-editor {
+    width: 42rem;
+    padding-bottom: 5rem;
+
+    #image-quote-container {
+      display: flex;
+
+      img {
+        width: 18rem;
+        border-radius: .2rem;
+      }
+
+      blockquote {
+        margin-left: 1rem;
+      }
+    }
+
+    #editor-button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+      #edit-button {
+        img {
+          margin-top: -0.28rem;
+        }
+      }
+    }
+  }

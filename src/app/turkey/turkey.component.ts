@@ -38,14 +38,8 @@ export class TurkeyComponent implements OnInit {
     this.store.dispatch(Actions.selectTurkey({ turkey }));
   }
 
-  editTurkey(turkey: Turkey): void {
-    const modalRef = this.ngbModal.open(TurkeyFormComponent);
-    modalRef.componentInstance.turkey = turkey;
-    modalRef.result.then((updatedTurkey: EditTurkeyResult) => {
-      if (updatedTurkey) {
-        this.store.dispatch(Actions.updateTurkey({ updatedTurkey }));
-      }
-    });
+  handleUpdatedTurkey(updatedTurkey: Turkey): void {
+    this.store.dispatch(Actions.updateTurkey({ updatedTurkey }));
   }
 
 }

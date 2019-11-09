@@ -1,0 +1,21 @@
+<div id="turkey-editor"
+    (mouseenter)="showEditButton = true"
+    (mouseleave)="showEditButton = false">
+    <div id="image-quote-container" class="border border-primary rounded">
+      <img src="/assets/turkeys/{{turkey.imgName}}" />
+
+      <blockquote class="blockquote">
+        <p class="mb-0">{{turkey.quote}}</p>
+        <footer class="blockquote-footer"><cite>{{turkey.name}}</cite></footer>
+      </blockquote>
+    </div>
+    <div id="editor-button-container">
+      <button
+        *ngIf="showEditButton"
+        id="edit-button"
+        class="btn btn-primary"
+        (click)="editTurkey(turkey)">
+        <img src="/assets/octicons/pencil.svg">
+      </button>
+    </div>
+  </div>
