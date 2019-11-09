@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { AppState } from './state/turkey.reducer';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Turkey } from './state/turkey.model';
 import * as Actions from './state/turkey.action';
+import { Turkey } from './state/turkey.model';
+import { AppState } from './state/turkey.reducer';
 import * as Selectors from './state/turkey.selector';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TurkeyFormComponent, EditTurkeyResult } from './components/turkey-form/turkey-form.component';
 
 @Component({
   selector: 'app-turkey',
